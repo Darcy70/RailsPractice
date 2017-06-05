@@ -1,0 +1,27 @@
+<script>
+console.log("checkpoint 1");
+
+
+  // $(document).ready(function () {
+  $(function () {
+  // })
+
+    $("#my-click").click(function () {
+      console.log("checkpoint 2");
+      $("#foo").after('zoo');
+    })
+  })
+
+  console.log("checkpoint 3");
+</script>
+
+
+
+
+<p>
+<a id="my-click">Click Me</a>
+</p>
+
+<div id="foo" style="border: 1px solid red;">
+  <p>bar</p>
+</div>
