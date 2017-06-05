@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       Like.create(:user => current_user, :post => @post )
     end
 
-    redirect_to posts_path
+    # redirect_to posts_path
 
   end
 
@@ -39,7 +39,8 @@ class PostsController < ApplicationController
     like = @post.find_like(current_user)
     like.destroy
 
-    redirect_to posts_path
+    # redirect_to posts_path
+    render "like"  # if we don't specify the file , Rails will automatically look for the js file named unlike.js.erb
   end
 
 
