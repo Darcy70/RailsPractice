@@ -55,6 +55,20 @@ class PostsController < ApplicationController
     render "like"  # if we don't specify the file , Rails will automatically look for the js file named unlike.js.erb
   end
 
+  def toggle_flag
+    @post = Post.find(params[:id])
+
+    if @post.flag_at
+      @post.flag_at = nil
+    else
+      @post.flag_at = Time.now
+    end
+
+    @post.save!
+
+    render :json => { message: "ok", flag_at: @post.flag_at, id: @post.id }
+
+  end
 
   protected
 
