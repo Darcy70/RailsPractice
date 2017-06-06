@@ -34,7 +34,7 @@
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight ) {
         var url = "/posts?max_id=" + current_post_id;
         if (url) {
-          $ajax({
+          $.ajax({
             method: "GET",
             url: url,
             dataType: "script"
