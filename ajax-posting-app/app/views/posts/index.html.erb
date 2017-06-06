@@ -28,4 +28,21 @@
        }
       })
     })
+
+    var current_post_id = <%= @posts.last.id %>;
+    $(window).scroll(function () {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight ) {
+        var url = "/posts?max_id=" + current_post_id;
+        if (url) {
+          $ajax({
+            method: "GET",
+            url: url,
+            dataType: "script"
+          })
+        } else {
+          console.log("data ended")
+        }
+      }
+    })
+
   </script>
