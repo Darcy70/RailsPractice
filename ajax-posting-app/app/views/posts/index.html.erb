@@ -16,15 +16,17 @@
 </div>
 
 <script>
-    $(".delete-post").click(function(evt){
+    $("#post-list").on('click', ".delete-post", function(evt){
       evt.preventDefault();
       var url = $(this).attr("href");
+      var that = this;
       $.ajax({
         url: url,
         method: 'DELETE',
         dataType: 'json', // 要求服务器回传 json
         success: function(data){   // data 就是服务器回传的 JSON 资料
-          $("#post-" + data["id"]).remove();
+          // $("#post-" + data["id"]).remove();
+          $(that).closest(".panel").remove();
        }
       })
     })
@@ -45,7 +47,7 @@
       }
     })
 
-    $(".toggle-flag").on('change', function () {
+    $("#post-list").on('change', ".toggle-flag", function () {
       var url = $(this).data("url");
 
       $.ajax({
@@ -54,9 +56,11 @@
         dataType: "json",
         success: function(data){
           if (data["flag_at"]) {
-            $("#post-flag-" + data["id"] ).html(data["flag_at"]);
+            // $("#post-flag-" + data["id"] ).html(data["flag_at"]);
+            $(this).closest("label").find("span").html(data["flag_at"])
           }else {
-            $("#post-flag-" + data["id"] ).html("");
+            // $("#post-flag-" + data["id"] ).html("");
+            $(that).closest("label").find("span").html("")
           }
         }
       })
