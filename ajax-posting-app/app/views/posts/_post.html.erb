@@ -2,6 +2,10 @@
   <div class="panel-heading"><%= post.user.display_name %></div>
   <div class="panel-body">
     <span id="post-thumbsup-<%= post.id %>" class="label label-success"><%= post.likes.count %> 👍 </span>
+    <!-- <div class="raty"></div> -->
+    <span class="average-score"><%= post.average_score %></span>
+    <div class="raty" data-score="<%= post.find_score(current_user).try(:score)|| 0%>", data-score-url="<%= rate_post_path(post)%>"></div>
+
     <%= post.content %>
 
     <div class="text-right">
